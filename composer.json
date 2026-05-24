@@ -1,0 +1,22 @@
+{
+    "name": "bigins/scriptor-simple-router",
+    "description": "Tiny URL router that runs ahead of Scriptor's page resolver.",
+    "type": "scriptor-plugin",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bigins\\ScriptorSimpleRouter\\": "src/"
+        }
+    },
+    "extra": {
+        "scriptor": {
+            "plugin": "Bigins\\ScriptorSimpleRouter\\Plugin"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11"
+    }
+}
