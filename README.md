@@ -10,34 +10,34 @@ faking Pages.
 `composer require` from a VCS repository pointing at this GitHub
 repo (no Packagist publication required):
 
-\`\`\`json
+```json
 {
     "repositories": [
         {"type": "vcs", "url": "https://github.com/<you>/scriptor-simple-router"}
     ]
 }
-\`\`\`
+```
 
-\`\`\`bash
+```bash
 composer require bigins/scriptor-simple-router:^0.1
-\`\`\`
+```
 
 The plugin auto-registers via Composer's `installed.json`
 (Scriptor reads `type: scriptor-plugin` packages at boot). One
 extra line in your theme's `_ext.php` activates the router:
 
-\`\`\`php
-if (\\Bigins\\ScriptorSimpleRouter\\Router::handle()) return;
-\`\`\`
+```php
+if (\Bigins\ScriptorSimpleRouter\Router::handle()) return;
+```
 
 ## Usage
 
 Declare routes in a `routes.php` next to your theme's `_ext.php`:
 
-\`\`\`php
-use Bigins\\ScriptorSimpleRouter\\Request;
-use Bigins\\ScriptorSimpleRouter\\Response;
-use Bigins\\ScriptorSimpleRouter\\Router;
+```php
+use Bigins\ScriptorSimpleRouter\Request;
+use Bigins\ScriptorSimpleRouter\Response;
+use Bigins\ScriptorSimpleRouter\Router;
 
 $router = Router::instance();
 
@@ -46,7 +46,7 @@ $router->get('/api/users/{id}', fn(Request $req) => Response::json([
 ]));
 
 $router->post('/webhook/stripe', StripeWebhookController::class);
-\`\`\`
+```
 
 Handler shapes: Closure, controller class string (uses
 `__invoke`), or `[Class, method]` array.
