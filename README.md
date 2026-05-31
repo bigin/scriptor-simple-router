@@ -7,20 +7,24 @@ faking Pages.
 
 ## Installation
 
-`composer require` from a VCS repository pointing at this GitHub
-repo (no Packagist publication required):
-
-```json
-{
-    "repositories": [
-        {"type": "vcs", "url": "https://github.com/<you>/scriptor-simple-router"}
-    ]
-}
-```
+This package is not on Packagist, so tell Composer where to find it
+with a one-time `repositories` entry, then require it:
 
 ```bash
+composer config repositories.scriptor-simple-router \
+  vcs https://github.com/bigin/scriptor-simple-router
 composer require bigins/scriptor-simple-router:^0.1
 ```
+
+The first command adds a VCS repository to your `composer.json`;
+without it `composer require` reports *"Could not find a version of
+package …"*. Scriptor ships a clean `composer.json` with no plugin
+repositories declared, so this step is required when installing into
+Scriptor too.
+
+In Docker, supply the repo URL and the package spec through the
+`SCRIPTOR_PLUGIN_REPOS` and `SCRIPTOR_PLUGINS` build args instead
+(see Scriptor's install docs).
 
 The plugin auto-registers via Composer's `installed.json`
 (Scriptor reads `type: scriptor-plugin` packages at boot). One
